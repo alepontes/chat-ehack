@@ -9,7 +9,11 @@ app.get('/', (req, res) => {
 
 
 io.on('connection', (socket)=>{
-    console.log('Novo usuario', socket);
+    console.log('Novo usuario', socket.id);
+    socket.on('msg', (msg)=>{
+        console.log(msg);
+        socket.broadcast.emit('msg', msg);
+    });
 });
 
 http.listen(3000, function () {
