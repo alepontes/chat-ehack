@@ -2,7 +2,7 @@
   "name": "chat",
   "version": "1.0.0",
   "description": "Chat",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.3",
