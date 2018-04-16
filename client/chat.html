@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <title>Chat</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
-
-    <h1>Chat Estação Hack</h1>
-
-    <div class="chat">
-        <div class="msgs">
-            <div class="msg">
-                <p class="nome">Nome</p>
-                <p class="texto" >Mensagem vai aqui</p>
-            </div>
-        </div>
-        <input class="input" placeholder="Texto aqui">
-        <button class="enviar">Botão</button>
+    <div class="topo">
+        <h1>Chat Estação Hack</h1>
+        <input type="text" placeholder="Nickname">
     </div>
-
-
+    
+    <div class="chat">
+        <div id="msgs">
+        </div>
+        <input id="input" placeholder="Texto aqui">
+    </div>
 </body>
+
 </html>
-
-

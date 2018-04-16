@@ -1,5 +1,6 @@
 .chat {
     width: 70%;
+    height: 400px;
     border-style: solid;
     border-color: black;
     border-width: 3px;
@@ -10,17 +11,50 @@
     border-style: solid;
     border-color: coral;
     border-width: 3px;
-    /* display: flex; */
+    display: flex;
+}
+
+.topo {
+    display: flex;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+}
+
+.topo h1 {
+    font-family: 'Courier New', Courier, monospace;
+    size: 30px;
+    margin-right: 10px;
+}
+
+.topo input {
+    width: 200px;
+    height: 30px;
 }
 
 .msg {
     display: grid;
     flex-wrap: wrap;
-    justify-content: flex-start;
     /* position: absolute; */
-    background-color: aqua;
     margin: 5px;
     padding: 5px;
+    width: 500px;
+}
+
+.rec {
+    background-color: aqua;
+    justify-content: flex-start;
+}
+
+.env {
+    background-color: rgb(74, 85, 172);
+    justify-content: flex-end;
+}
+
+.conectou {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: initial;
 }
 
 .nome {
@@ -45,6 +79,7 @@
     margin-bottom: 5px;
 }
 
-.input {
-    width: 90%;
+#input {
+    width: 100%;
+	bottom: 0%;
 }
