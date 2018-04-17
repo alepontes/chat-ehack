@@ -3,18 +3,18 @@ let global_nickname = '';
 //Travar div
 
 
-$(function(){
+$(function () {
     $("#input").prop("disabled", true);
 });
 
 
 
 socket.on('connect', function () {
-   
+
     let msg = {
         'tipo': 0,
         'nick': global_nickname
-    } 
+    }
     conectou(msg);
 });
 
@@ -32,7 +32,7 @@ $(function () {
                 global_nickname = nome;
                 $(this).prop("disabled", true);
                 $("#input").prop("disabled", false);
-                
+
                 //CONECTAR AQUI
             }//if
         } //if
@@ -43,14 +43,19 @@ $(function () {
 $(function () {
     $("#input").keydown(function (key) {
         if (key.keyCode === 13) {
-             let texto = $(this).val();
+            let texto = $(this).val();
             let msg = {
                 'nick': global_nickname,
                 'texto': texto
             }
-            socket.emit('msg', msg);
-            $(this).val('');
-            msg_dahora(msg, 1);
+
+            texto = sanetize(texto);
+
+            if (texto) {
+                socket.emit('msg', msg);
+                $(this).val('');
+                msg_dahora(msg, 1);
+            }
         } //if
     });
 });
@@ -75,12 +80,12 @@ function msg_dahora(msg, tipo) {
     $div_msg.append($texto);
 
     $("#msgs").append($div_msg);
-        
+
 
     let global_chat = document.querySelector(".chat");
-    
+
     let alt = global_chat.scrollHeight;
-    global_chat.scrollTo({top: alt})
+    global_chat.scrollTo({ top: alt })
 
     console.log('Altura: ' + alt);
 
@@ -89,16 +94,22 @@ function msg_dahora(msg, tipo) {
 function conectou(tipo) {
 
     let $div_conec = $(`<div class='conectou'></div>`);
-    let titulo ='';
+    let titulo = '';
 
     if (tipo == 0) {
-         titulo = 'Nome';
+        titulo = 'Nome';
     } else {
-     titulo = 'Você';
+        titulo = 'Você';
     }
 
     let $iae_krl = $(`<p class='oi'>${titulo} se conectou</p>`);
 
     $div_conec.append($iae_krl);
     $("#msgs").append($div_conec);
+}
+
+
+function sanetize(stg) {
+    stg = stg.trim();
+    return stg;
 }
