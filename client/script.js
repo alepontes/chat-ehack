@@ -1,26 +1,58 @@
 const socket = io();
+let global_nickname = '';
+
+//Travar div
+
+
+$(function(){
+    $("#input").prop("disabled", true);
+});
 
 socket.on('connect', function () {
-    $("#msgs").append(socket.id, ' se conectou', '<br>');
-    socket.emit('msg', socket.id + ' Me conectei');
+   
+    let msg = {
+        'tipo': 0,
+        'nick': global_nickname
+    } 
+    conectou(msg);
 });
 
 socket.on('msg', function (msg) {
     msg_dahora(msg, 0);
 });
 
+$(function () {
+    $("#nickname").keydown(function (key) {
+        if (key.keyCode === 13) {
+
+            let nome = $(this).val();
+            console.log('Nome: ' + nome);
+            if (nome.length > 2) {
+                global_nickname = nome;
+                $(this).prop("disabled", true);
+                $("#input").prop("disabled", false);
+                
+                //CONECTAR AQUI
+            }//if
+        } //if
+    });
+});
+
 
 $(function () {
-    $("input").keydown(function (key) {
+    $("#input").keydown(function (key) {
         if (key.keyCode === 13) {
-            let msg = $(this).val();
+             let texto = $(this).val();
+            let msg = {
+                'nick': global_nickname,
+                'texto': texto
+            }
             socket.emit('msg', msg);
             $(this).val('');
             msg_dahora(msg, 1);
         } //if
     });
 });
-
 
 function msg_dahora(msg, tipo) {
 
@@ -31,9 +63,15 @@ function msg_dahora(msg, tipo) {
         tipo_msg = 'env';
     }
 
+    let nick = msg.nick;
+    let texto = msg.texto;
+
+    console.log(`Nick ${nick}`)
+    console.log(`Texto ${texto}`)
+
     let $div_msg = $(`<div class='msg ${tipo_msg}'></div>`);
-    let $nome = $(`<p class='nome'>${msg}</p>`);
-    let $texto = $(`<p class="texto">${msg}</p>`);
+    let $nome = $(`<p class='nome'>${nick}</p>`);
+    let $texto = $(`<p class="texto">${texto}</p>`);
 
     $div_msg.append($nome);
     $div_msg.append($texto);
@@ -44,16 +82,18 @@ function msg_dahora(msg, tipo) {
 function conectou(tipo) {
 
     let $div_conec = $(`<div class='conectou'></div>`);
+    let titulo ='';
 
     if (tipo == 0) {
-        let titulo = 'Nome';
+         titulo = 'Nome';
     } else {
-        let titulo = 'Você';
+     titulo = 'Você';
     }
 
     let $iae_krl = $(`<p class='oi'>${titulo} se conectou</p>`);
 
     $div_conec.append($iae_krl);
-
-    $("#msgs").append($div_msg);
+    $("#msgs").append($div_conec);
 }
+
+;
