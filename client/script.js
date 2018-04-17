@@ -60,6 +60,21 @@ $(function () {
     });
 });
 
+$(function(){
+
+    console.log('Func');
+    $("#input").keydown(function (key) {
+
+        let txt_input = $(this).val();
+
+        if(txt_input.length > 80){
+            console.log('Maior')
+            txt_input = txt_input.substring(0, 75);
+            $(this).val(txt_input);
+        }
+    });
+});
+
 function msg_dahora(msg, tipo) {
 
     let tipo_msg = '';
