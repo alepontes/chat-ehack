@@ -1,9 +1,11 @@
 .chat {
     width: 99.5%;
-    height: 557px;
+    height: 74vh;
     border-style: solid;
     border-color: black;
     border-width: 3px;
+    overflow-y: scroll;
+    scroll-behavior: auto;
 }
 
 .msgs{

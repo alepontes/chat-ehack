@@ -1,12 +1,13 @@
 const socket = io();
 let global_nickname = '';
-
 //Travar div
 
 
 $(function(){
     $("#input").prop("disabled", true);
 });
+
+
 
 socket.on('connect', function () {
    
@@ -66,9 +67,6 @@ function msg_dahora(msg, tipo) {
     let nick = msg.nick;
     let texto = msg.texto;
 
-    console.log(`Nick ${nick}`)
-    console.log(`Texto ${texto}`)
-
     let $div_msg = $(`<div class='msg ${tipo_msg}'></div>`);
     let $nome = $(`<p class='nome'>${nick}</p>`);
     let $texto = $(`<p class="texto">${texto}</p>`);
@@ -77,6 +75,15 @@ function msg_dahora(msg, tipo) {
     $div_msg.append($texto);
 
     $("#msgs").append($div_msg);
+        
+
+    let global_chat = document.querySelector("#chat");
+    
+    let alt = global_chat.scrollHeight;
+    chat.scrollTo({top: 1000})
+
+    console.log('Altura: ' + alt);
+
 }
 
 function conectou(tipo) {
@@ -95,5 +102,3 @@ function conectou(tipo) {
     $div_conec.append($iae_krl);
     $("#msgs").append($div_conec);
 }
-
-;
