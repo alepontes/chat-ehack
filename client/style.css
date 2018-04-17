@@ -1,17 +1,23 @@
 .chat {
-    width: 70%;
-    height: 400px;
+    width: 99.5%;
+    height: 557px;
     border-style: solid;
     border-color: black;
     border-width: 3px;
 }
 
-.msgs {
+.msgs{
     height: 400px;
     border-style: solid;
     border-color: coral;
     border-width: 3px;
     display: flex;
+    margin-left: 50%;
+}
+
+#msgs{
+    text-align: center;
+    margin-top: 5px;
 }
 
 .topo {
@@ -38,17 +44,21 @@
     /* position: absolute; */
     margin: 5px;
     padding: 5px;
-    width: 500px;
+    width: 98%;
 }
 
 .rec {
-    background-color: aqua;
+    background-color:rgb(140, 153, 248) ;
     justify-content: flex-start;
+    margin-right: 50%;
+    width:47%;
 }
 
 .env {
-    background-color: rgb(74, 85, 172);
+    background-color:rgb(169, 255, 169) ;
     justify-content: flex-end;
+    margin-left: 50%;
+    width:47%;
 }
 
 .conectou {
@@ -80,6 +90,10 @@
 }
 
 #input {
-    width: 100%;
-	bottom: 0%;
+    margin-bottom: 20px;
+    height: 10px;
+    position: fixed;
+    width: 97.5%;
+    bottom: 0%;
+    margin-left: 3px;
 }
