@@ -80,7 +80,7 @@ function msg_dahora(msg, tipo) {
     let global_chat = document.querySelector("#chat");
     
     let alt = global_chat.scrollHeight;
-    chat.scrollTo({top: 1000})
+    global_chat.scrollTo({top: alt})
 
     console.log('Altura: ' + alt);
 
