@@ -77,7 +77,7 @@ function msg_dahora(msg, tipo) {
     $("#msgs").append($div_msg);
         
 
-    let global_chat = document.querySelector("#chat");
+    let global_chat = document.querySelector(".chat");
     
     let alt = global_chat.scrollHeight;
     global_chat.scrollTo({top: alt})
